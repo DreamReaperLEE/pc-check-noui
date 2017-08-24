@@ -3,7 +3,7 @@ import os
 
 import re
 
-
+#CD-ROM
 # 该文件为驱动器状态查询文件
 
 # 该函数负责查询驱动器内是否有介质
