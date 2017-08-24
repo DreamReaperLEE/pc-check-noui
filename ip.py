@@ -11,11 +11,13 @@ import web_test
 ip_list = web_test.doPost('ip_config', 'useless')
 ip_list = json.loads(ip_list)
 ip_list = ip_list['result']
-#获取本机建立的IP列表
+
+
+# 获取本机建立的IP列表
 def get_ip_list():
     ip_new = []
     result = os.popen('netstat -ano | findstr ESTABLISHED').readlines()
-    #对获取到的IP信息进行逐行解析，得到IP及端口信息
+    # 对获取到的IP信息进行逐行解析，得到IP及端口信息
     for a in result:
         num = (re.findall('\d [\s]*[\S]*:', a))
         x = num[0]
@@ -32,9 +34,9 @@ def get_ip_list():
 
 # 将新旧IP列表进行比较，获得新建立的IP连接信息，并且生成日志
 def update_ip(old, new):
-    #判断是否有新IP产生
+    # 判断是否有新IP产生
     if list(set(new).difference(set(old))):
-        result =' 主机名称：' + sysname.hostname
+        result = ' 主机名称：' + sysname.hostname
         out = result + ' TCP协议 '
         dif = list(set(new).difference(set(old)))
         for every in dif:
@@ -47,7 +49,7 @@ def update_ip(old, new):
             temp = desip.split(":")
             desip = temp[0]
             desport = temp[1]
-            every = out +'本机IP：'+ sourceip + ' 端口：' + sourceport + ' 目的IP：' + desip + ' 端口：' + desport
+            every = out + '本机IP：' + sourceip + ' 端口：' + sourceport + ' 目的IP：' + desip + ' 端口：' + desport
             data = {}
             data['level'] = '4'
             data['type'] = '设备事件'

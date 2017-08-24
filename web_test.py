@@ -45,5 +45,5 @@ def doPost(name, msg):
     headers = {'Content-Type': 'application/json'}
     request = urllib2.Request(url='http://127.0.0.1:8000/get_json', headers=headers, data=data)
     response = urllib2.urlopen(request)
-    response=response.read()
+    response = response.read()
     return response

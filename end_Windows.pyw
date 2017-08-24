@@ -28,7 +28,7 @@ def query():
     # 初始化失败用户列表
     logfail_old = failevent.Lognum()
     # 初始化系统信息列表
-    sysinfo_old=[]
+    sysinfo_old = []
     sysinfo_old = sysinfo_query(sysinfo_old)
     # 初始化User列表
     user_old = User.get_user_list()
@@ -203,6 +203,6 @@ def CDdriver_query(CDdriver_old):
 
 if __name__ == "__main__":
     # 创建线程，目标函数为query函数
-    #运行该脚本前请先运行代理服务器并保证网络通畅
+    # 运行该脚本前请先运行代理服务器并保证网络通畅
     th = threading.Thread(target=query)
     th.start()

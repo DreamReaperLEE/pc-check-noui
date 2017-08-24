@@ -19,9 +19,10 @@ import web_test
 result = web_test.doPost('port_config', 'useless')
 result = json.loads(result)
 result = result['result']
-port_list=[]
+port_list = []
 for every in result:
     port_list.append(every.encode('utf-8'))
+
 
 # 查询获取所有开放的非法端口信息并返回
 def get_port_list():
@@ -47,6 +48,7 @@ def get_port_list():
         endx.append(int(every))
     endx.sort()
     return endx
+
 
 # 将新旧端口列表进行比较，获得新开放的端口信息，并且生成日志
 def update_port(old, new):
